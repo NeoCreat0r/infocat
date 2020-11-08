@@ -1,7 +1,7 @@
 # infocat
 Программа позовляет создать полезную нагрузку, благодоря которой вы сможете получить данные о своей системе прямо из Telegram бота.
 ## Описание
-![logo](https://github.com/NeoCreat0r/infocat/blob/main/logo.jpg)
+![logo](https://github.com/NeoCreat0r/infocat/blob/main/Builder/logo.jpg)
 
 Основа **Infocat** заключается в том, что он создает системную программу, которая собирает информацию о системе. В данные для сбора входит:
 
