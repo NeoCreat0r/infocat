@@ -30,6 +30,7 @@
 ### TIPS
 Компиляция готвого system-файла происходит при помощи утилиты **pyinstaller** с использованием команды:
 * `pyinstaller -F -i путь_до_иконки --onefile путь_до_файла_system.py`
+
 Установка зависимых библиотек в программе:
 * `pip install -r requirements.txt`
 
