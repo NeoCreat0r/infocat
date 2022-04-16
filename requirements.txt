@@ -1,0 +1,12 @@
+getpass4
+os-sys
+lib-platform
+sockets
+DateTime
+uuid
+psutil
+PyAutoGUI
+speedtest-cli
+pyTelegramBotAPI
+PyAudio
+Wave
