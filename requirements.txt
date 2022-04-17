@@ -10,3 +10,5 @@ speedtest-cli
 pyTelegramBotAPI
 PyAudio
 Wave
+Pillow
+subprocess.run
