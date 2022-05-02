@@ -16,3 +16,5 @@ asyncio
 winregistry
 PyQt5
 PyQt5-tools
+PyInstaller
+pywin32
