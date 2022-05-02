@@ -7,8 +7,12 @@ uuid
 psutil
 PyAutoGUI
 speedtest-cli
-pyTelegramBotAPI
+aiogram
 PyAudio
 Wave
 Pillow
 subprocess.run
+asyncio
+winregistry
+PyQt5
+PyQt5-tools
